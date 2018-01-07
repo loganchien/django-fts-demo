@@ -10,3 +10,8 @@ class Article(models.Model):
 
     class Meta(object):
         indexes = [GinIndex(fields=['search_vector'])]
+
+
+class Comment(models.Model):
+    article = models.ForeignKey('Article', on_delete=models.CASCADE)
+    content = models.TextField()
